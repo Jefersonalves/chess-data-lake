@@ -17,6 +17,36 @@ em 3 camadas e elas foram nomeadas como as fases de um jogo de xadrez:
 2. `middle`: Camada de dados processados e armazenados em formato parquet.
 3. `final`: Camada de dados curados, na qual os dados são armazenados em formato parquet e particionados por casos de uso.
 
+## Primeira Etapa
+
+Foi desenvolvido um pacote Python para gerar dados fictícios de partidas de xadrez e armazená-los em um bucket do S3. O pacote está disponível no repositório [https://github.com/Jefersonalves/chess-data-ingestion](https://github.com/Jefersonalves/chess-data-ingestion)
+
+O pacote gera arquivos JSON como o exemplo a seguir:
+
+```json
+{
+    "event": "Rated Blitz game",
+    "site": "https://www.chess.com",
+    "white": "hdias",
+    "black": "slima",
+    "result": "1-0",
+    "utc_date": "2022.11.23",
+    "utc_time": "06:54:54",
+    "white_elo": 2629,
+    "black_elo": 2532,
+    "white_rating_diff": 89,
+    "black_rating_diff": 38,
+    "eco": "E60",
+    "opening": "Kings Indian Defense",
+    "time_control": "300+0",
+    "termination": "Normal",
+    "moves": "1. d4 Nf6 2. c4 g6 3. Nc3 Bg7"
+}
+```
+
+Dessa forma, o pacote foi usado para gerar os dados e realizar a ingestão na camada `opening` simulando um aplicativo de jogos de xadrez nomeado `game-app`.
+
+
 ## Segunda Etapa
 
 A Segunda etapa possui um conjunto de novos requisitos, a saber:
