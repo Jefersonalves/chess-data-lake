@@ -1,11 +1,11 @@
 ## data-lake-challenge
 
-Este é um projeto de Data Lake para o [Bootcamp Engenharia de Dados AWS](https://howedu.com.br/cohort/engenharia-de-dados) da How Education.
+Este é um projeto de Data Lake usando os serviçoes da [AWS](https://aws.amazon.com/) para o [Bootcamp Engenharia de Dados AWS](https://howedu.com.br/cohort/engenharia-de-dados) da How Education.
 
 O projeto deve satisfazer aos requisitos:
-1. Gerar dados fictícios sobre algum assunto de interesse e realizar a ingestão dos dados em um Data Lake hospedado no AWS S3.
-2. Configurar um crawler usando o AWS Glue para catalogar os dados em tabelas.
-3. Realizar 3 consultas nas tabelas criadas através do AWS Athena.
+1. Gerar dados fictícios sobre algum assunto de interesse e realizar a ingestão dos dados em um Data Lake hospedado no [S3](https://aws.amazon.com/pt/s3/).
+2. Configurar um crawler usando o [Glue](https://aws.amazon.com/pt/glue/) para catalogar os dados em tabelas.
+3. Realizar 3 consultas nas tabelas criadas através do [Athena](https://aws.amazon.com/pt/athena/).
 
 ## Proposta de Solução
 
@@ -19,7 +19,7 @@ em 3 camadas e elas foram nomeadas como as fases de um jogo de xadrez:
 
 ### 1. Dados fictícios
 
-Foi desenvolvido um pacote Python para gerar dados fictícios de partidas de xadrez e armazená-los em um bucket do S3. O pacote está disponível no repositório [https://github.com/Jefersonalves/chess-data-ingestion](https://github.com/Jefersonalves/chess-data-ingestion)
+Foi desenvolvido um pacote Python para gerar dados fictícios de partidas de xadrez e armazená-los em um bucket do S3. O pacote está disponível no repositório [https://github.com/Jefersonalves/chess-data-ingestion](https://github.com/Jefersonalves/chess-data-ingestion).
 
 O pacote gera arquivos JSON como o exemplo a seguir:
 
@@ -44,11 +44,11 @@ O pacote gera arquivos JSON como o exemplo a seguir:
 }
 ```
 
-Dessa forma, o pacote foi usado para gerar os dados e realizar a ingestão na camada `opening` simulando um aplicativo de jogos de xadrez nomeado `game-app`.
+O pacote foi usado para gerar os dados e realizar a ingestão na camada `opening` simulando um aplicativo de jogos de xadrez nomeado `game-app`.
 
 ### 2. Configuração do Crawler
 
-Na primeira etapa do desafio, o crawler do AWS Glue foi confirgurado para catalogar a camada `opening` como uma database e os dados do `game-app` como uma tabela. A imagem abaixo exibe o crawler criado.
+O crawler do Glue foi confirgurado para catalogar a camada `opening` como uma database e os dados do `game-app` como uma tabela. A imagem abaixo exibe o crawler criado.
 
 ![Crawler](images/crawler.png)
 
@@ -56,7 +56,7 @@ A instrução DDL para criação da tabela está disponível no arquivo [queries
 
 ### 3. Consultas no Athena
 
-Uma vez que a tabela estava catalogada, foi possível realizar consultas através do AWS Athena.
+Uma vez que a tabela estava catalogada, foi possível realizar consultas através do Athena.
 As consultas realizadas abordaram diferentes casos de uso.
 
 A primeira consulta ([queries/1.sql](queries/1.sql)) retorna o número de partidas por data de extração.
@@ -65,5 +65,5 @@ A primeira consulta ([queries/1.sql](queries/1.sql)) retorna o número de partid
 A segunda ([queries/2.sql](queries/2.sql)) calcula a taxa de vitória das aberturas para os jogadores de brancas e negras.
 ![query2](images/query_2.png)
 
-A última ([queries/3.sql](queries/3.sql)), por sua vez, busca identificar quais são os primeiros movimentos mais comuns para ambos os jogadores.
+A terceira ([queries/3.sql](queries/3.sql)) busca identificar quais são os primeiros movimentos mais comuns para ambos os jogadores.
 ![query3](images/query_3.png)
