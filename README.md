@@ -46,6 +46,11 @@ O pacote gera arquivos JSON como o exemplo a seguir:
 
 Dessa forma, o pacote foi usado para gerar os dados e realizar a ingestão na camada `opening` simulando um aplicativo de jogos de xadrez nomeado `game-app`.
 
+Na primeira etapa do desafio, o crawler do AWS Glue foi confirgurado para catalogar a camada `opening` como uma database e os dados do `game-app` como uma tabela. A imagem abaixo exibe o crawler criado.
+
+![Crawler](images/crawler.png)
+
+A instrução DDL para criação da tabela está disponível no arquivo [queries/ddl.sql](queries/ddl.sql)
 
 ## Segunda Etapa
 
