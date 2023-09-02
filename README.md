@@ -44,7 +44,7 @@ O pacote gera arquivos JSON como o exemplo a seguir:
 }
 ```
 
-O pacote foi usado para gerar os dados e realizar a ingestão na camada `opening` simulando um aplicativo de jogos de xadrez nomeado `game-app`.
+O pacote foi usado para simular a geração de dados em um aplicativo de xadrez nomeado `game-app` e realizar a ingestão na camada `opening`.
 
 ### 2. Configuração do Crawler
 
