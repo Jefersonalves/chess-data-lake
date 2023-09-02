@@ -50,7 +50,19 @@ Na primeira etapa do desafio, o crawler do AWS Glue foi confirgurado para catalo
 
 ![Crawler](images/crawler.png)
 
-A instrução DDL para criação da tabela está disponível no arquivo [queries/ddl.sql](queries/ddl.sql)
+A instrução DDL para criação da tabela está disponível no arquivo [queries/ddl.sql](queries/ddl.sql).
+
+Uma vez que a tabela estava catalogada, foi possível realizar consultas através do AWS Athena.
+As consultas realizadas abordaram diferentes casos de uso.
+
+A primeira consulta ([queries/1.sql](queries/1.sql)) retorna o número de partidas por data de extração.
+![query1](images/query_1.png)
+
+A segunda ([queries/2.sql](queries/2.sql)) calcula a taxa de vitória das aberturas para os jogadores de brancas e negras.
+![query2](images/query_2.png)
+
+A última ([queries/3.sql](queries/3.sql)), por sua vez, busca identificar quais são os primeiros movimentos mais comuns para ambos os jogadores.
+![query3](images/query_3.png)
 
 ## Segunda Etapa
 
