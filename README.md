@@ -2,7 +2,7 @@
 
 Este é um projeto de Data Lake para o [Bootcamp Engenharia de Dados AWS](https://howedu.com.br/cohort/engenharia-de-dados) da How Education.
 
-O projeto possui duas etapas. A primeira deve satisfazer aos requisitos:
+O projeto deve satisfazer aos requisitos:
 1. Gerar dados fictícios sobre algum assunto de interesse e realizar a ingestão dos dados em um Data Lake hospedado no AWS S3.
 2. Configurar um crawler usando o AWS Glue para catalogar os dados em tabelas.
 3. Realizar 3 consultas nas tabelas criadas através do AWS Athena.
@@ -17,7 +17,7 @@ em 3 camadas e elas foram nomeadas como as fases de um jogo de xadrez:
 2. `middle`: Camada de dados processados e armazenados em formato parquet.
 3. `final`: Camada de dados curados, na qual os dados são armazenados em formato parquet e particionados por casos de uso.
 
-## Primeira Etapa
+### 1. Dados fictícios
 
 Foi desenvolvido um pacote Python para gerar dados fictícios de partidas de xadrez e armazená-los em um bucket do S3. O pacote está disponível no repositório [https://github.com/Jefersonalves/chess-data-ingestion](https://github.com/Jefersonalves/chess-data-ingestion)
 
@@ -46,11 +46,15 @@ O pacote gera arquivos JSON como o exemplo a seguir:
 
 Dessa forma, o pacote foi usado para gerar os dados e realizar a ingestão na camada `opening` simulando um aplicativo de jogos de xadrez nomeado `game-app`.
 
+### 2. Configuração do Crawler
+
 Na primeira etapa do desafio, o crawler do AWS Glue foi confirgurado para catalogar a camada `opening` como uma database e os dados do `game-app` como uma tabela. A imagem abaixo exibe o crawler criado.
 
 ![Crawler](images/crawler.png)
 
 A instrução DDL para criação da tabela está disponível no arquivo [queries/ddl.sql](queries/ddl.sql).
+
+### 3. Consultas no Athena
 
 Uma vez que a tabela estava catalogada, foi possível realizar consultas através do AWS Athena.
 As consultas realizadas abordaram diferentes casos de uso.
@@ -63,10 +67,3 @@ A segunda ([queries/2.sql](queries/2.sql)) calcula a taxa de vitória das abertu
 
 A última ([queries/3.sql](queries/3.sql)), por sua vez, busca identificar quais são os primeiros movimentos mais comuns para ambos os jogadores.
 ![query3](images/query_3.png)
-
-## Segunda Etapa
-
-A Segunda etapa possui um conjunto de novos requisitos, a saber:
-1. Criar um script pyspark para processar os dados da camada `raw` para a camada `stage`.
-2. Criar um script pyspark para processar os dados da camada `stage` para a camada `curated`.
-3. Realizar 3 consultas nas tabelas curadas.
