@@ -6,6 +6,9 @@ O projeto deve satisfazer aos requisitos:
 1. Gerar dados fictícios sobre algum assunto de interesse e realizar a ingestão dos dados em um Data Lake hospedado no [S3](https://aws.amazon.com/pt/s3/).
 2. Configurar um crawler usando o [Glue](https://aws.amazon.com/pt/glue/) para catalogar os dados em tabelas.
 3. Realizar 3 consultas nas tabelas criadas através do [Athena](https://aws.amazon.com/pt/athena/).
+4. Processar os dados da primeira camada (opening ou raw) para a segunda (middle ou stage).
+5. Processar os dados da segunda camada (middle ou stage) para a terceira (final ou curated).
+6. Catalogar as tabelas da segunda e terceira camadas com o Glue.
 
 ## Proposta de Solução
 
