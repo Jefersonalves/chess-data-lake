@@ -89,5 +89,5 @@ df = df.withColumn(
 #  |-- time_format: string (nullable = true)
 #  |-- utc_month: date (nullable = true)
 
-DESTINATION_TABLE = "s3a://chess-data-lake-middle/games-app/"
+DESTINATION_TABLE = "s3a://chess-data-lake-middle/games-app/games/"
 df.write.partitionBy("utc_month").mode("overwrite").parquet(DESTINATION_TABLE)
