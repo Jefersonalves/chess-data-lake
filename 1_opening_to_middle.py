@@ -1,26 +1,9 @@
-import os
-
 import pyspark.sql.functions as F
-from pyspark.sql import SparkSession
 
-spark = (
-    SparkSession.builder.config(
-        "spark.hadoop.fs.s3a.access.key", os.environ.get("AWS_ACCESS_KEY_ID")
-    )
-    .config("spark.hadoop.fs.s3a.secret.key", os.environ.get("AWS_SECRET_ACCESS_KEY"))
-    .config("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
-    .config("spark.hadoop.fs.s3a.endpoint", "s3.sa-east-1.amazonaws.com")
-    .config(
-        "spark.hadoop.fs.s3a.aws.credentials.provider",
-        "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider",
-    )
-    .config("spark.jars.packages", "com.amazonaws:aws-java-sdk:1.12.533")
-    .config("spark.jars.packages", "org.apache.hadoop:hadoop-common:3.2.2")
-    .config("spark.jars.packages", "org.apache.hadoop:hadoop-client:3.2.2")
-    .config("spark.jars.packages", "org.apache.hadoop:hadoop-aws:3.2.2")
-    .appName("app")
-    .getOrCreate()
-)
+from spark_session_builder import create_spark_session
+
+
+spark = create_spark_session()
 
 SOURCE_TABLE = "s3a://chess-data-lake-opening/games-app/"
 df = spark.read.option("mode", "PERMISSIVE").json(SOURCE_TABLE)
@@ -81,8 +64,8 @@ df = df.withColumn(
 df = df.withColumn("time_format", F.lower(F.split("event", r" ")[1]))
 
 df = df.withColumn(
-        "utc_month", F.to_date(F.date_format(F.col("utc_datetime"), "yyyy-MM-01"))
-    )
+    "utc_month", F.to_date(F.date_format(F.col("utc_datetime"), "yyyy-MM-01"))
+)
 
 # df.printSchema()
 # root
