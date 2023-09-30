@@ -51,7 +51,7 @@ O pacote foi usado para simular a geração de dados em um aplicativo de xadrez 
 
 ### 2. Configuração do Crawler
 
-O crawler do Glue foi confirgurado para catalogar a camada `opening` como uma database e os dados do `game-app` como uma tabela. A imagem abaixo exibe o crawler criado.
+O crawler do Glue foi configurado para catalogar a camada `opening` como uma database e os dados do `game-app` como uma tabela. A imagem abaixo exibe o crawler criado.
 
 ![Crawler](images/crawler.png)
 
@@ -70,3 +70,9 @@ A segunda ([queries/2.sql](queries/2.sql)) calcula a taxa de vitória das abertu
 
 A terceira ([queries/3.sql](queries/3.sql)) busca identificar quais são os primeiros movimentos mais comuns para ambos os jogadores.
 ![query3](images/query_3.png)
+
+### 4. Processamento da camada `opening` para `middle`
+
+Os dados da camada `opening` estão disponíveis como arquivos no formato json particionados por data de extração.
+O script [1_opening_to_middle.py](1_opening_to_middle.py) carrega os dados nesse formato inicial e usa o [Apache Spark](https://spark.apache.org/) para transformá-los e armazená-los na camada `middle` no formato colunar parquet.
+Foram feitas transformações para converter os tipos de dados, adicionar e remover colunas, criar novas colunas derivadas e particionar a tabela pelo ano em que o jogo foi realizado.
