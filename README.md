@@ -20,6 +20,8 @@ em 3 camadas e elas foram nomeadas como as fases de um jogo de xadrez:
 2. `middle`: Camada de dados processados e armazenados em formato parquet.
 3. `final`: Camada de dados curados, na qual os dados são armazenados em formato parquet e particionados por casos de uso.
 
+![diagram](images/diagram.png)
+
 ### 1. Dados fictícios
 
 Foi desenvolvido um pacote Python para gerar dados fictícios de partidas de xadrez e armazená-los em um bucket do S3. O pacote está disponível no repositório [https://github.com/Jefersonalves/chess-data-ingestion](https://github.com/Jefersonalves/chess-data-ingestion).
