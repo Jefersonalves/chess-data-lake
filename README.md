@@ -83,3 +83,8 @@ Foram feitas transformações para converter os tipos de dados, adicionar e remo
 
 Uma feature comum em apps de xadrez é exibir o ranking dos jogadores baseado em seus ratings atuais.
 A fim de disponibilizar as informações para a construção dessa feature no app, foi criado o script [scripts/middle_to_final.py](scripts/middle_to_final.py). O script carrega os dados da camada `middle`, obtém o rating mais recente de todos os jogadores, faz o ranqueamento dos jogadores atribuindo lhes o percentil em que se encontram e, por fim, os dados são particionados pelo formato de tempo dos jogos e armazenados na camada `final`.
+
+### 6. Catalogação das tabelas da camada `middle` e `final`
+
+Foram criados crawlers para catalogar as tabelas da camada `middle` e `final`.
+Os arquivos DDL para a criação das tabelas estão disponíveis em [sql/middle_app_games_ddl.sql](sql/middle_app_games_ddl.sql) e [sql/final_players_rank_ddl.sql](sql/final_players_rank_ddl.sql).
