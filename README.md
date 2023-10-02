@@ -57,21 +57,21 @@ O crawler do Glue foi configurado para catalogar a camada `opening` como uma dat
 
 ![Crawler](images/crawler.png)
 
-A instrução DDL para criação da tabela está disponível no arquivo [queries/ddl.sql](queries/ddl.sql).
+A instrução DDL para criação da tabela está disponível no arquivo [sql/ddl.sql](sql/ddl.sql).
 
 ### 3. Consultas no Athena
 
 Uma vez que a tabela estava catalogada, foi possível realizar consultas através do Athena.
 As consultas realizadas abordaram diferentes casos de uso.
 
-A primeira consulta ([queries/1.sql](queries/1.sql)) retorna o número de partidas por data de extração.
-![query1](images/query_1.png)
+A primeira consulta ([sql/games_number.sql](sql/games_number.sql)) retorna o número de partidas por data de extração.
+![games_number](images/games_number.png)
 
-A segunda ([queries/2.sql](queries/2.sql)) calcula a taxa de vitória das aberturas para os jogadores de brancas e negras.
-![query2](images/query_2.png)
+A segunda ([sql/promising_openings.sql](sql/promising_openings.sql)) calcula a taxa de vitória das aberturas para os jogadores de brancas e negras.
+![promising_openings](images/promising_openings.png)
 
-A terceira ([queries/3.sql](queries/3.sql)) busca identificar quais são os primeiros movimentos mais comuns para ambos os jogadores.
-![query3](images/query_3.png)
+A terceira ([sql/popular_moves.sql](sql/popular_moves.sql)) busca identificar quais são os primeiros movimentos mais comuns para ambos os jogadores.
+![popular_moves](images/popular_moves.png)
 
 ### 4. Processamento da camada `opening` para `middle`
 
