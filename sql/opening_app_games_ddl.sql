@@ -1,4 +1,4 @@
-CREATE EXTERNAL TABLE `games_app`(
+CREATE EXTERNAL TABLE `games`(
   `event` string COMMENT 'from deserializer', 
   `site` string COMMENT 'from deserializer', 
   `white` string COMMENT 'from deserializer', 
@@ -26,16 +26,16 @@ STORED AS INPUTFORMAT
 OUTPUTFORMAT 
   'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
 LOCATION
-  's3://chess-data-lake-opening/games-app/'
+  's3://chess-data-lake-opening/app/games/'
 TBLPROPERTIES (
   'CrawlerSchemaDeserializerVersion'='1.0', 
   'CrawlerSchemaSerializerVersion'='1.0', 
-  'UPDATED_BY_CRAWLER'='games-crawler', 
-  'averageRecordSize'='400', 
+  'UPDATED_BY_CRAWLER'='opening_crawler', 
+  'averageRecordSize'='399', 
   'classification'='json', 
   'compressionType'='none', 
-  'objectCount'='4', 
+  'objectCount'='15', 
   'partition_filtering.enabled'='true', 
-  'recordCount'='2630', 
-  'sizeKey'='1053466', 
+  'recordCount'='8594', 
+  'sizeKey'='3441838', 
   'typeOfData'='file')

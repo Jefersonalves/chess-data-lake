@@ -11,7 +11,7 @@ results_by_opening as (
         count(*) filter(where "result" = '1/2-1/2') as draws,
         count(*) games_played
 
-    from "games_app"
+    from "opening"."games"
     group by "opening"
 
 ),

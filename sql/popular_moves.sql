@@ -8,7 +8,7 @@ game_moves as (
         "moves",
         regexp_extract_all("moves", '[A-Za-z]+[0-9]+') as move_list
 
-    from "games_app"
+    from "opening"."games"
 
 ),
 
