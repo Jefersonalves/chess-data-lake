@@ -6,7 +6,7 @@ from spark_session_builder import create_spark_session
 spark = create_spark_session()
 
 
-SOURCE_TABLE = "s3a://chess-data-lake-middle/games-app/games/"
+SOURCE_TABLE = "s3a://chess-data-lake-middle/app/games/"
 df = spark.read.parquet(SOURCE_TABLE)
 
 white_players = df.select(

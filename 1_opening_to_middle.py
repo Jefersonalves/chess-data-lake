@@ -5,7 +5,7 @@ from spark_session_builder import create_spark_session
 
 spark = create_spark_session()
 
-SOURCE_TABLE = "s3a://chess-data-lake-opening/games-app/"
+SOURCE_TABLE = "s3a://chess-data-lake-opening/app/games/"
 df = spark.read.option("mode", "PERMISSIVE").json(SOURCE_TABLE)
 
 # df.printSchema()
@@ -89,5 +89,5 @@ df = df.withColumn(
 #  |-- time_format: string (nullable = true)
 #  |-- utc_month: date (nullable = true)
 
-DESTINATION_TABLE = "s3a://chess-data-lake-middle/games-app/games/"
+DESTINATION_TABLE = "s3a://chess-data-lake-middle/app/games/"
 df.write.partitionBy("utc_month").mode("overwrite").parquet(DESTINATION_TABLE)

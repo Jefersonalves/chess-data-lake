@@ -6,7 +6,7 @@ games as (
     select
         *,
         cast(date_parse("extracted_at", '%Y-%m-%d') as date) as extracted_at_parsed
-    from "games_app"
+    from "opening"."games"
 )
 
 select
