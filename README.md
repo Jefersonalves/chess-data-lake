@@ -1,24 +1,30 @@
 ## chess-data-lake
 
-Este é um projeto de Data Lake usando os serviços da [AWS](https://aws.amazon.com/) para o [Bootcamp Engenharia de Dados AWS](https://howedu.com.br/cohort/engenharia-de-dados) da How Education.
+Este é um projeto de Data Lake usando os serviços da [AWS](https://aws.amazon.com/) apresentado como solução para o desafio do [Bootcamp Engenharia de Dados AWS](https://howedu.com.br/cohort/engenharia-de-dados) da How Education.
 
-O projeto deve satisfazer aos requisitos:
+O desafio foi dividido em duas etapas, sendo que na primeira etapa, deveria realizar os seguintes passos:
+
 1. Gerar dados fictícios sobre algum assunto de interesse e realizar a ingestão dos dados em um Data Lake hospedado no [S3](https://aws.amazon.com/pt/s3/).
 2. Configurar um crawler usando o [Glue](https://aws.amazon.com/pt/glue/) para catalogar os dados em tabelas.
 3. Realizar 3 consultas nas tabelas criadas através do [Athena](https://aws.amazon.com/pt/athena/).
+
+Para a segunda etapa, o projeto deveria satisfazer aos requisitos:
+
 4. Processar os dados da primeira camada (opening ou raw) para a segunda (middle ou stage).
 5. Processar os dados da segunda camada (middle ou stage) para a terceira (final ou curated).
 6. Catalogar as tabelas da segunda e terceira camadas com o Glue.
 
 ## Proposta de Solução
 
-A solução proposta consiste em um Data Lake para armazenar dados de xadrez.
+A solução proposta consiste em um Data Lake para armazenar dados de jogos de xadrez.
 
-Foram criados 3 buckets no S3. Os buckets foram organizados 
-em 3 camadas e elas foram nomeadas como as fases de um jogo de xadrez:
+Foram criados 3 buckets no S3 para compor o Data Lake. Os buckets foram organizados 
+em camadas e elas foram nomeadas como as fases de um jogo de xadrez:
 1. `opening`: Camada de entrada dos dados, na qual os dados permanecem no formato original.
 2. `middle`: Camada de dados processados e armazenados em formato parquet.
 3. `final`: Camada de dados curados, na qual os dados são armazenados em formato parquet e particionados por casos de uso.
+
+A imagem abaixo exibe o diagrama da solução final.
 
 ![diagram](images/diagram.png)
 
