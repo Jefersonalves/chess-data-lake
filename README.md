@@ -1,6 +1,6 @@
 ## data-lake-challenge
 
-Este é um projeto de Data Lake usando os serviçoes da [AWS](https://aws.amazon.com/) para o [Bootcamp Engenharia de Dados AWS](https://howedu.com.br/cohort/engenharia-de-dados) da How Education.
+Este é um projeto de Data Lake usando os serviços da [AWS](https://aws.amazon.com/) para o [Bootcamp Engenharia de Dados AWS](https://howedu.com.br/cohort/engenharia-de-dados) da How Education.
 
 O projeto deve satisfazer aos requisitos:
 1. Gerar dados fictícios sobre algum assunto de interesse e realizar a ingestão dos dados em um Data Lake hospedado no [S3](https://aws.amazon.com/pt/s3/).
@@ -49,11 +49,11 @@ O pacote gera arquivos JSON como o exemplo a seguir:
 }
 ```
 
-O pacote foi usado para simular a geração de dados em um aplicativo de xadrez nomeado `game-app` e realizar a ingestão na camada `opening`.
+O pacote foi usado para simular a geração de dados em um aplicativo de xadrez nomeado `app` e realizar a ingestão na camada `opening`.
 
 ### 2. Configuração do Crawler
 
-O crawler do Glue foi configurado para catalogar a camada `opening` como uma database e os dados do `game-app` como uma tabela. A imagem abaixo exibe o crawler criado.
+O crawler do Glue foi configurado para catalogar a camada `opening` como uma database e os dados do `app` como uma tabela. A imagem abaixo exibe o crawler criado.
 
 ![Crawler](images/crawler.png)
 
@@ -82,4 +82,4 @@ Foram feitas transformações para converter os tipos de dados, adicionar e remo
 ### 5. Processamento da camada `middle` para `final`
 
 Uma feature comum em apps de xadrez é exibir o ranking dos jogadores baseado em seus ratings atuais.
-A fim de disponibilizar as informações para a construção dessa feature no game-app, foi criado o script [scripts/middle_to_final.py](scripts/middle_to_final.py). O script carrega os dados da camada `middle`, obtém o rating mais recente de todos os jogadores, faz o ranqueamento dos jogadores atribuindo lhes o percentil em que se encontram e, por fim, os dados são particionados pelo formato de tempo dos jogos e armazenados na camada `final`.
+A fim de disponibilizar as informações para a construção dessa feature no app, foi criado o script [scripts/middle_to_final.py](scripts/middle_to_final.py). O script carrega os dados da camada `middle`, obtém o rating mais recente de todos os jogadores, faz o ranqueamento dos jogadores atribuindo lhes o percentil em que se encontram e, por fim, os dados são particionados pelo formato de tempo dos jogos e armazenados na camada `final`.
