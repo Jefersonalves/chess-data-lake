@@ -1,4 +1,4 @@
-## data-lake-challenge
+## chess-data-lake
 
 Este é um projeto de Data Lake usando os serviços da [AWS](https://aws.amazon.com/) para o [Bootcamp Engenharia de Dados AWS](https://howedu.com.br/cohort/engenharia-de-dados) da How Education.
 
