@@ -76,10 +76,10 @@ A terceira ([sql/popular_moves.sql](sql/popular_moves.sql)) busca identificar qu
 ### 4. Processamento da camada `opening` para `middle`
 
 Os dados da camada `opening` estão disponíveis como arquivos no formato json particionados por data de extração.
-O script [1_opening_to_middle.py](1_opening_to_middle.py) carrega os dados nesse formato inicial e usa o [Apache Spark](https://spark.apache.org/) para transformá-los e armazená-los na camada `middle` no formato colunar parquet.
+O script [opening_to_middle.py](opening_to_middle.py) carrega os dados nesse formato inicial e usa o [Apache Spark](https://spark.apache.org/) para transformá-los e armazená-los na camada `middle` no formato colunar parquet.
 Foram feitas transformações para converter os tipos de dados, adicionar e remover colunas, criar novas colunas derivadas e particionar a tabela pelo ano em que o jogo foi realizado.
 
 ### 5. Processamento da camada `middle` para `final`
 
 Uma feature comum em apps de xadrez é exibir o ranking dos jogadores baseado em seus ratings atuais.
-A fim de disponibilizar as informações para a construção dessa feature no game-app, foi criado o script [2_middle_to_final.py](2_middle_to_final.py). O script carrega os dados da camada `middle`, obtém o rating mais recente de todos os jogadores, faz o ranqueamento dos jogadores atribuindo lhes o percentil em que se encontram e, por fim, os dados são particionados pelo formato de tempo dos jogos e armazenados na camada `final`.
+A fim de disponibilizar as informações para a construção dessa feature no game-app, foi criado o script [middle_to_final.py](middle_to_final.py). O script carrega os dados da camada `middle`, obtém o rating mais recente de todos os jogadores, faz o ranqueamento dos jogadores atribuindo lhes o percentil em que se encontram e, por fim, os dados são particionados pelo formato de tempo dos jogos e armazenados na camada `final`.
