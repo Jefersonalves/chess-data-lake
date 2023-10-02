@@ -57,7 +57,7 @@ O crawler do Glue foi configurado para catalogar a camada `opening` como uma dat
 
 ![Crawler](images/crawler.png)
 
-A instrução DDL para criação da tabela está disponível no arquivo [sql/ddl.sql](sql/ddl.sql).
+A instrução DDL para criação da tabela está disponível no arquivo [sql/opening_app_games_ddl.sql](sql/opening_app_games_ddl.sql).
 
 ### 3. Consultas no Athena
 
